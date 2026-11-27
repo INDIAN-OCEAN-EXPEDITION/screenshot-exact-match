@@ -21,9 +21,9 @@ import { Route as InformationsRouteImport } from './routes/informations'
 import { Route as InspirationRouteImport } from './routes/inspiration'
 import { Route as ReservationRouteImport } from './routes/reservation'
 import { Route as VoyagesRouteImport } from './routes/voyages'
-import { Route as DestinationsSlugRouteImport } from './routes/destinations.$slug'
-import { Route as InspirationSlugRouteImport } from './routes/inspiration.$slug'
-import { Route as VoyagesIdRouteImport } from './routes/voyages.$id'
+import { Route as DestinationsSlugRouteImport } from './routes/destinations_.$slug'
+import { Route as InspirationSlugRouteImport } from './routes/inspiration_.$slug'
+import { Route as VoyagesIdRouteImport } from './routes/voyages_.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -86,19 +86,19 @@ const VoyagesRoute = VoyagesRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const DestinationsSlugRoute = DestinationsSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => DestinationsRoute,
+  id: '/destinations_/$slug',
+  path: '/destinations/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const InspirationSlugRoute = InspirationSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => InspirationRoute,
+  id: '/inspiration_/$slug',
+  path: '/inspiration/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const VoyagesIdRoute = VoyagesIdRouteImport.update({
-  id: '/$id',
-  path: '/$id',
-  getParentRoute: () => VoyagesRoute,
+  id: '/voyages_/$id',
+  path: '/voyages/$id',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -107,13 +107,13 @@ export interface FileRoutesByFullPath {
   '/billetterie': typeof BilletterieRoute
   '/circuits': typeof CircuitsRoute
   '/contact': typeof ContactRoute
-  '/destinations': typeof DestinationsRouteWithChildren
+  '/destinations': typeof DestinationsRoute
   '/devis': typeof DevisRoute
   '/excursions': typeof ExcursionsRoute
   '/informations': typeof InformationsRoute
-  '/inspiration': typeof InspirationRouteWithChildren
+  '/inspiration': typeof InspirationRoute
   '/reservation': typeof ReservationRoute
-  '/voyages': typeof VoyagesRouteWithChildren
+  '/voyages': typeof VoyagesRoute
   '/destinations/$slug': typeof DestinationsSlugRoute
   '/inspiration/$slug': typeof InspirationSlugRoute
   '/voyages/$id': typeof VoyagesIdRoute
@@ -124,13 +124,13 @@ export interface FileRoutesByTo {
   '/billetterie': typeof BilletterieRoute
   '/circuits': typeof CircuitsRoute
   '/contact': typeof ContactRoute
-  '/destinations': typeof DestinationsRouteWithChildren
+  '/destinations': typeof DestinationsRoute
   '/devis': typeof DevisRoute
   '/excursions': typeof ExcursionsRoute
   '/informations': typeof InformationsRoute
-  '/inspiration': typeof InspirationRouteWithChildren
+  '/inspiration': typeof InspirationRoute
   '/reservation': typeof ReservationRoute
-  '/voyages': typeof VoyagesRouteWithChildren
+  '/voyages': typeof VoyagesRoute
   '/destinations/$slug': typeof DestinationsSlugRoute
   '/inspiration/$slug': typeof InspirationSlugRoute
   '/voyages/$id': typeof VoyagesIdRoute
@@ -142,16 +142,16 @@ export interface FileRoutesById {
   '/billetterie': typeof BilletterieRoute
   '/circuits': typeof CircuitsRoute
   '/contact': typeof ContactRoute
-  '/destinations': typeof DestinationsRouteWithChildren
+  '/destinations': typeof DestinationsRoute
   '/devis': typeof DevisRoute
   '/excursions': typeof ExcursionsRoute
   '/informations': typeof InformationsRoute
-  '/inspiration': typeof InspirationRouteWithChildren
+  '/inspiration': typeof InspirationRoute
   '/reservation': typeof ReservationRoute
-  '/voyages': typeof VoyagesRouteWithChildren
-  '/destinations/$slug': typeof DestinationsSlugRoute
-  '/inspiration/$slug': typeof InspirationSlugRoute
-  '/voyages/$id': typeof VoyagesIdRoute
+  '/voyages': typeof VoyagesRoute
+  '/destinations_/$slug': typeof DestinationsSlugRoute
+  '/inspiration_/$slug': typeof InspirationSlugRoute
+  '/voyages_/$id': typeof VoyagesIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -202,9 +202,9 @@ export interface FileRouteTypes {
     | '/inspiration'
     | '/reservation'
     | '/voyages'
-    | '/destinations/$slug'
-    | '/inspiration/$slug'
-    | '/voyages/$id'
+    | '/destinations_/$slug'
+    | '/inspiration_/$slug'
+    | '/voyages_/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -213,13 +213,16 @@ export interface RootRouteChildren {
   BilletterieRoute: typeof BilletterieRoute
   CircuitsRoute: typeof CircuitsRoute
   ContactRoute: typeof ContactRoute
-  DestinationsRoute: typeof DestinationsRouteWithChildren
+  DestinationsRoute: typeof DestinationsRoute
   DevisRoute: typeof DevisRoute
   ExcursionsRoute: typeof ExcursionsRoute
   InformationsRoute: typeof InformationsRoute
-  InspirationRoute: typeof InspirationRouteWithChildren
+  InspirationRoute: typeof InspirationRoute
   ReservationRoute: typeof ReservationRoute
-  VoyagesRoute: typeof VoyagesRouteWithChildren
+  VoyagesRoute: typeof VoyagesRoute
+  DestinationsSlugRoute: typeof DestinationsSlugRoute
+  InspirationSlugRoute: typeof InspirationSlugRoute
+  VoyagesIdRoute: typeof VoyagesIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -308,64 +311,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VoyagesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/destinations/$slug': {
-      id: '/destinations/$slug'
-      path: '/$slug'
+    '/destinations_/$slug': {
+      id: '/destinations_/$slug'
+      path: '/destinations/$slug'
       fullPath: '/destinations/$slug'
       preLoaderRoute: typeof DestinationsSlugRouteImport
-      parentRoute: typeof DestinationsRoute
+      parentRoute: typeof rootRouteImport
     }
-    '/inspiration/$slug': {
-      id: '/inspiration/$slug'
-      path: '/$slug'
+    '/inspiration_/$slug': {
+      id: '/inspiration_/$slug'
+      path: '/inspiration/$slug'
       fullPath: '/inspiration/$slug'
       preLoaderRoute: typeof InspirationSlugRouteImport
-      parentRoute: typeof InspirationRoute
+      parentRoute: typeof rootRouteImport
     }
-    '/voyages/$id': {
-      id: '/voyages/$id'
-      path: '/$id'
+    '/voyages_/$id': {
+      id: '/voyages_/$id'
+      path: '/voyages/$id'
       fullPath: '/voyages/$id'
       preLoaderRoute: typeof VoyagesIdRouteImport
-      parentRoute: typeof VoyagesRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
-
-interface DestinationsRouteChildren {
-  DestinationsSlugRoute: typeof DestinationsSlugRoute
-}
-
-const DestinationsRouteChildren: DestinationsRouteChildren = {
-  DestinationsSlugRoute: DestinationsSlugRoute,
-}
-
-const DestinationsRouteWithChildren = DestinationsRoute._addFileChildren(
-  DestinationsRouteChildren,
-)
-
-interface InspirationRouteChildren {
-  InspirationSlugRoute: typeof InspirationSlugRoute
-}
-
-const InspirationRouteChildren: InspirationRouteChildren = {
-  InspirationSlugRoute: InspirationSlugRoute,
-}
-
-const InspirationRouteWithChildren = InspirationRoute._addFileChildren(
-  InspirationRouteChildren,
-)
-
-interface VoyagesRouteChildren {
-  VoyagesIdRoute: typeof VoyagesIdRoute
-}
-
-const VoyagesRouteChildren: VoyagesRouteChildren = {
-  VoyagesIdRoute: VoyagesIdRoute,
-}
-
-const VoyagesRouteWithChildren =
-  VoyagesRoute._addFileChildren(VoyagesRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -373,13 +341,16 @@ const rootRouteChildren: RootRouteChildren = {
   BilletterieRoute: BilletterieRoute,
   CircuitsRoute: CircuitsRoute,
   ContactRoute: ContactRoute,
-  DestinationsRoute: DestinationsRouteWithChildren,
+  DestinationsRoute: DestinationsRoute,
   DevisRoute: DevisRoute,
   ExcursionsRoute: ExcursionsRoute,
   InformationsRoute: InformationsRoute,
-  InspirationRoute: InspirationRouteWithChildren,
+  InspirationRoute: InspirationRoute,
   ReservationRoute: ReservationRoute,
-  VoyagesRoute: VoyagesRouteWithChildren,
+  VoyagesRoute: VoyagesRoute,
+  DestinationsSlugRoute: DestinationsSlugRoute,
+  InspirationSlugRoute: InspirationSlugRoute,
+  VoyagesIdRoute: VoyagesIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
