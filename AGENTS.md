@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Application architecture
+- Keep TanStack Start routing and the root shell; this is the platform bootstrap and replacing it would break preview and publishing.
+- Put catalog types and mock content in `src/data`, replaceable adapters in `src/services`, and reusable travel presentation in `src/components/travel`; this separates future API integration from the interface.
+- All request adapters are explicitly frontend demonstrations with no storage, transmission, authentication or payment; confirmations must never imply a real booking.
+- Each leaf route owns app-specific social metadata, and visual roles use the semantic design system in `src/styles.css`; this keeps navigation and brand presentation consistent.

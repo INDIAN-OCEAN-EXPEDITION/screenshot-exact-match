@@ -10,33 +10,216 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AProposRouteImport } from './routes/a-propos'
+import { Route as BilletterieRouteImport } from './routes/billetterie'
+import { Route as CircuitsRouteImport } from './routes/circuits'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DestinationsRouteImport } from './routes/destinations'
+import { Route as DevisRouteImport } from './routes/devis'
+import { Route as ExcursionsRouteImport } from './routes/excursions'
+import { Route as InformationsRouteImport } from './routes/informations'
+import { Route as InspirationRouteImport } from './routes/inspiration'
+import { Route as ReservationRouteImport } from './routes/reservation'
+import { Route as VoyagesRouteImport } from './routes/voyages'
+import { Route as DestinationsSlugRouteImport } from './routes/destinations.$slug'
+import { Route as InspirationSlugRouteImport } from './routes/inspiration.$slug'
+import { Route as VoyagesIdRouteImport } from './routes/voyages.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AProposRoute = AProposRouteImport.update({
+  id: '/a-propos',
+  path: '/a-propos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BilletterieRoute = BilletterieRouteImport.update({
+  id: '/billetterie',
+  path: '/billetterie',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CircuitsRoute = CircuitsRouteImport.update({
+  id: '/circuits',
+  path: '/circuits',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DestinationsRoute = DestinationsRouteImport.update({
+  id: '/destinations',
+  path: '/destinations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DevisRoute = DevisRouteImport.update({
+  id: '/devis',
+  path: '/devis',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExcursionsRoute = ExcursionsRouteImport.update({
+  id: '/excursions',
+  path: '/excursions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InformationsRoute = InformationsRouteImport.update({
+  id: '/informations',
+  path: '/informations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InspirationRoute = InspirationRouteImport.update({
+  id: '/inspiration',
+  path: '/inspiration',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReservationRoute = ReservationRouteImport.update({
+  id: '/reservation',
+  path: '/reservation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VoyagesRoute = VoyagesRouteImport.update({
+  id: '/voyages',
+  path: '/voyages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DestinationsSlugRoute = DestinationsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => DestinationsRoute,
+} as any)
+const InspirationSlugRoute = InspirationSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => InspirationRoute,
+} as any)
+const VoyagesIdRoute = VoyagesIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => VoyagesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/billetterie': typeof BilletterieRoute
+  '/circuits': typeof CircuitsRoute
+  '/contact': typeof ContactRoute
+  '/destinations': typeof DestinationsRouteWithChildren
+  '/devis': typeof DevisRoute
+  '/excursions': typeof ExcursionsRoute
+  '/informations': typeof InformationsRoute
+  '/inspiration': typeof InspirationRouteWithChildren
+  '/reservation': typeof ReservationRoute
+  '/voyages': typeof VoyagesRouteWithChildren
+  '/destinations/$slug': typeof DestinationsSlugRoute
+  '/inspiration/$slug': typeof InspirationSlugRoute
+  '/voyages/$id': typeof VoyagesIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/billetterie': typeof BilletterieRoute
+  '/circuits': typeof CircuitsRoute
+  '/contact': typeof ContactRoute
+  '/destinations': typeof DestinationsRouteWithChildren
+  '/devis': typeof DevisRoute
+  '/excursions': typeof ExcursionsRoute
+  '/informations': typeof InformationsRoute
+  '/inspiration': typeof InspirationRouteWithChildren
+  '/reservation': typeof ReservationRoute
+  '/voyages': typeof VoyagesRouteWithChildren
+  '/destinations/$slug': typeof DestinationsSlugRoute
+  '/inspiration/$slug': typeof InspirationSlugRoute
+  '/voyages/$id': typeof VoyagesIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/billetterie': typeof BilletterieRoute
+  '/circuits': typeof CircuitsRoute
+  '/contact': typeof ContactRoute
+  '/destinations': typeof DestinationsRouteWithChildren
+  '/devis': typeof DevisRoute
+  '/excursions': typeof ExcursionsRoute
+  '/informations': typeof InformationsRoute
+  '/inspiration': typeof InspirationRouteWithChildren
+  '/reservation': typeof ReservationRoute
+  '/voyages': typeof VoyagesRouteWithChildren
+  '/destinations/$slug': typeof DestinationsSlugRoute
+  '/inspiration/$slug': typeof InspirationSlugRoute
+  '/voyages/$id': typeof VoyagesIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/a-propos'
+    | '/billetterie'
+    | '/circuits'
+    | '/contact'
+    | '/destinations'
+    | '/devis'
+    | '/excursions'
+    | '/informations'
+    | '/inspiration'
+    | '/reservation'
+    | '/voyages'
+    | '/destinations/$slug'
+    | '/inspiration/$slug'
+    | '/voyages/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/a-propos'
+    | '/billetterie'
+    | '/circuits'
+    | '/contact'
+    | '/destinations'
+    | '/devis'
+    | '/excursions'
+    | '/informations'
+    | '/inspiration'
+    | '/reservation'
+    | '/voyages'
+    | '/destinations/$slug'
+    | '/inspiration/$slug'
+    | '/voyages/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/a-propos'
+    | '/billetterie'
+    | '/circuits'
+    | '/contact'
+    | '/destinations'
+    | '/devis'
+    | '/excursions'
+    | '/informations'
+    | '/inspiration'
+    | '/reservation'
+    | '/voyages'
+    | '/destinations/$slug'
+    | '/inspiration/$slug'
+    | '/voyages/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AProposRoute: typeof AProposRoute
+  BilletterieRoute: typeof BilletterieRoute
+  CircuitsRoute: typeof CircuitsRoute
+  ContactRoute: typeof ContactRoute
+  DestinationsRoute: typeof DestinationsRouteWithChildren
+  DevisRoute: typeof DevisRoute
+  ExcursionsRoute: typeof ExcursionsRoute
+  InformationsRoute: typeof InformationsRoute
+  InspirationRoute: typeof InspirationRouteWithChildren
+  ReservationRoute: typeof ReservationRoute
+  VoyagesRoute: typeof VoyagesRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +231,155 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/a-propos': {
+      id: '/a-propos'
+      path: '/a-propos'
+      fullPath: '/a-propos'
+      preLoaderRoute: typeof AProposRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/billetterie': {
+      id: '/billetterie'
+      path: '/billetterie'
+      fullPath: '/billetterie'
+      preLoaderRoute: typeof BilletterieRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/circuits': {
+      id: '/circuits'
+      path: '/circuits'
+      fullPath: '/circuits'
+      preLoaderRoute: typeof CircuitsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/destinations': {
+      id: '/destinations'
+      path: '/destinations'
+      fullPath: '/destinations'
+      preLoaderRoute: typeof DestinationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/devis': {
+      id: '/devis'
+      path: '/devis'
+      fullPath: '/devis'
+      preLoaderRoute: typeof DevisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/excursions': {
+      id: '/excursions'
+      path: '/excursions'
+      fullPath: '/excursions'
+      preLoaderRoute: typeof ExcursionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/informations': {
+      id: '/informations'
+      path: '/informations'
+      fullPath: '/informations'
+      preLoaderRoute: typeof InformationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inspiration': {
+      id: '/inspiration'
+      path: '/inspiration'
+      fullPath: '/inspiration'
+      preLoaderRoute: typeof InspirationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reservation': {
+      id: '/reservation'
+      path: '/reservation'
+      fullPath: '/reservation'
+      preLoaderRoute: typeof ReservationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/voyages': {
+      id: '/voyages'
+      path: '/voyages'
+      fullPath: '/voyages'
+      preLoaderRoute: typeof VoyagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/destinations/$slug': {
+      id: '/destinations/$slug'
+      path: '/$slug'
+      fullPath: '/destinations/$slug'
+      preLoaderRoute: typeof DestinationsSlugRouteImport
+      parentRoute: typeof DestinationsRoute
+    }
+    '/inspiration/$slug': {
+      id: '/inspiration/$slug'
+      path: '/$slug'
+      fullPath: '/inspiration/$slug'
+      preLoaderRoute: typeof InspirationSlugRouteImport
+      parentRoute: typeof InspirationRoute
+    }
+    '/voyages/$id': {
+      id: '/voyages/$id'
+      path: '/$id'
+      fullPath: '/voyages/$id'
+      preLoaderRoute: typeof VoyagesIdRouteImport
+      parentRoute: typeof VoyagesRoute
+    }
   }
 }
 
+interface DestinationsRouteChildren {
+  DestinationsSlugRoute: typeof DestinationsSlugRoute
+}
+
+const DestinationsRouteChildren: DestinationsRouteChildren = {
+  DestinationsSlugRoute: DestinationsSlugRoute,
+}
+
+const DestinationsRouteWithChildren = DestinationsRoute._addFileChildren(
+  DestinationsRouteChildren,
+)
+
+interface InspirationRouteChildren {
+  InspirationSlugRoute: typeof InspirationSlugRoute
+}
+
+const InspirationRouteChildren: InspirationRouteChildren = {
+  InspirationSlugRoute: InspirationSlugRoute,
+}
+
+const InspirationRouteWithChildren = InspirationRoute._addFileChildren(
+  InspirationRouteChildren,
+)
+
+interface VoyagesRouteChildren {
+  VoyagesIdRoute: typeof VoyagesIdRoute
+}
+
+const VoyagesRouteChildren: VoyagesRouteChildren = {
+  VoyagesIdRoute: VoyagesIdRoute,
+}
+
+const VoyagesRouteWithChildren =
+  VoyagesRoute._addFileChildren(VoyagesRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AProposRoute: AProposRoute,
+  BilletterieRoute: BilletterieRoute,
+  CircuitsRoute: CircuitsRoute,
+  ContactRoute: ContactRoute,
+  DestinationsRoute: DestinationsRouteWithChildren,
+  DevisRoute: DevisRoute,
+  ExcursionsRoute: ExcursionsRoute,
+  InformationsRoute: InformationsRoute,
+  InspirationRoute: InspirationRouteWithChildren,
+  ReservationRoute: ReservationRoute,
+  VoyagesRoute: VoyagesRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
